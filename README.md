@@ -16,7 +16,7 @@ All these classes are inherited from ActiveResouce::Base. Refer to the [ActiveRe
 
 ### Documentation
 
-  It will be on [rdoc.info][rdoc]
+  I'm on [rdoc.info][rdoc]
 
 ### Configure your key
     
@@ -66,7 +66,7 @@ version file.
 [api]: http://www.bookingsync.com/en/documentation/api
 [ar]: http://api.rubyonrails.org/classes/ActiveResource/Base.html
 [bs]:  http://www.bookingsync.com
-[rdoc]: http://rdoc.info/projects/bookingsync/bookingsync-ruby
+[rdoc]: http://rdoc.info/github/BookingSync/bookingsync-ruby/master/frames
 [mit]:http://www.opensource.org/licenses/mit-license.php
-[i]:  https://github.com/bookingsync/bookingsync-ruby/issues
+[i]:  https://github.com/BookingSync/bookingsync-ruby/issues
 [zencocoon]: https://github.com/ZenCocoon
