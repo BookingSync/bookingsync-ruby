@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "autotest/discover.rb",
+    "bookingsync.gemspec",
     "examples/config_initializers_bookingsync.rb",
     "examples/sample.rb",
     "lib/bookingsync.rb",
