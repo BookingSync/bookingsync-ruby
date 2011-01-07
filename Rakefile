@@ -12,11 +12,18 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "bookingsync-ruby"
-  gem.homepage = "http://github.com/ZenCocoon/bookingsync-ruby"
+  gem.name = "bookingsync"
+  gem.homepage = "http://github.com/BookingSync/bookingsync-ruby"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Ruby wrapper around BookingSync API}
+  gem.description = <<-EOT
+  Ruby wrapper around BookingSync API
+  
+  Configure by adding the following:
+
+  require 'bookingsync'
+  BookingSync::Base.user = 'your_api_auth_token'
+  EOT
   gem.email = "public@zencocoon.com"
   gem.authors = ["Sebastien Grosjean"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
@@ -44,7 +51,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "bookingsync-ruby #{version}"
+  rdoc.title = "bookingsync #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
