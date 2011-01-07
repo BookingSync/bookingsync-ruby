@@ -1,4 +1,4 @@
-# BookingSync (0.1.0)
+# BookingSync (0.1.1)
 
 ## What is it?
 
