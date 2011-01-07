@@ -1,18 +1,18 @@
-# BookingSync-Ruby (0.1.0)
+# BookingSync (0.1.0)
 
 ## What is it?
 
 This gem provides a set of classes to access information on [BookingSync][bs] via the published [API][api]:
 
-    MyBooking, Booking, Client, Rental.
+    Booking, Client, Rental.
 
 All these classes are inherited from ActiveResouce::Base. Refer to the [ActiveResouce][ar] documentation for more information.
 
 ## Installing
 
-    gem install bookingsync-ruby
+    gem install bookingsync
 
-### Dependencies (see <code>bookingsync-ruby.gemspec</code> or run <code>bundle check</code>)
+### Dependencies (see <code>bookingsync.gemspec</code> or run <code>bundle check</code>)
 
 ### Documentation
 
@@ -48,7 +48,7 @@ Comments are welcome. Send your feedback through the [issue tracker on GitHub][i
 If you have fixes: Submit via pull requests. Do not include version changes to the 
 version file.
 
-## Contributing to bookingsync-ruby
+## Contributing to BookingSync
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
