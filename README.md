@@ -1,4 +1,4 @@
-# BookingSync (0.1.1)
+# BookingSync (0.1.1) [![Build Status](http://travis-ci.org/BookingSync/bookingsync-ruby.png)](http://travis-ci.org/BookingSync/bookingsync-ruby)
 
 ## What is it?
 
