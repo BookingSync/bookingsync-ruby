@@ -37,5 +37,6 @@ DEPENDENCIES
   activeresource (>= 3.0.0)
   bundler (~> 1.0.0)
   jeweler (~> 1.5.1)
+  rake (= 0.8.7)
   rcov
   rspec (~> 2.2.0)
