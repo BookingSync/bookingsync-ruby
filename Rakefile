@@ -1,61 +1,64 @@
-require 'rubygems'
-require 'bundler'
-begin
-  Bundler.setup(:default, :development)
-rescue Bundler::BundlerError => e
-  $stderr.puts e.message
-  $stderr.puts "Run `bundle install` to install missing gems"
-  exit e.status_code
-end
+require 'bundler/setup'
 require 'rake'
-
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "bookingsync"
-  gem.homepage = "http://github.com/BookingSync/bookingsync-ruby"
-  gem.license = "MIT"
-  gem.summary = %Q{Ruby wrapper around BookingSync API}
-  gem.description = <<-EOT
-  Ruby wrapper around BookingSync API
-  
-  Configure by adding the following:
-
-  require 'bookingsync'
-  BookingSync::Base.user = 'your_api_auth_token'
-  EOT
-  gem.email = "public@zencocoon.com"
-  gem.authors = ["Sebastien Grosjean"]
-  # Include your dependencies below. Runtime dependencies are required when using your gem,
-  # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  # gem.add_runtime_dependency 'activeresource', '>= 3.0.0'
-  # gem.add_development_dependency 'rspec', '>= 2.2.0'
-  # gem.add_development_dependency "bundler", "~> 1.0.0"
-  # gem.add_development_dependency "jeweler", "~> 1.5.1"
-  # gem.add_development_dependency "rcov", ">= 0"
-  # gem.add_development_dependency "ZenTest", ">= 0"
-end
-Jeweler::RubygemsDotOrgTasks.new
-
-require 'rspec/core'
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = FileList['spec/**/*_spec.rb']
+require 'cucumber/rake/task'
+require 'appraisal'
+
+desc "Default: Run all specs and cucumber features under all supported Rails versions."
+task :default => ["appraisal:install"] do
+  exec('rake appraisal spec cucumber')
 end
 
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
+desc "Run all specs"
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.rspec_opts = %w[--color]
 end
 
-task :default => :spec
+Cucumber::Rake::Task.new(:cucumber)
 
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+if RUBY_VERSION.to_f == 1.8
+  namespace :rcov do
+    task :cleanup do
+      rm_rf 'coverage.data'
+    end
 
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "bookingsync #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+    RSpec::Core::RakeTask.new :spec do |t|
+      t.rcov = true
+      t.rcov_opts = %[-Ilib -Ispec --exclude "gems/*,features"]
+      t.rcov_opts << %[--no-html --aggregate coverage.data]
+    end
+
+    Cucumber::Rake::Task.new :cucumber do |t|
+      t.cucumber_opts = %w{--format progress}
+      t.rcov = true
+      t.rcov_opts = %[-Ilib -Ispec --exclude "gems/*,features"]
+      t.rcov_opts << %[--text-report --sort coverage --aggregate coverage.data]
+    end
+  end
+
+  desc "run specs and cukes with rcov"
+  task :rcov => ["rcov:cleanup", "rcov:spec", "rcov:cucumber"]
+end
+
+desc "Push docs/cukes to relishapp using the relish-client-gem"
+task :relish, :version do |t, args|
+  raise "rake relish[VERSION]" unless args[:version]
+  sh "cp Changelog.md features/"
+  sh "relish versions:add bookingsync-ruby:#{args[:version]}"
+  sh "relish push BookingSync/bookingsync-ruby:#{args[:version]}"
+  sh "rm features/Changelog.md"
+end
+
+task :clobber do
+  rm_rf 'pkg'
+  rm_rf 'tmp'
+  rm_rf 'coverage'
+  rm 'coverage.data'
+end
+
+namespace :clobber do
+  desc "remove generated rbc files"
+  task :rbc do
+    Dir['**/*.rbc'].each {|f| File.delete(f)}
+  end
 end

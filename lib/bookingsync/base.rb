@@ -1,9 +1,7 @@
-require 'active_resource'
-
 module BookingSync
   class Base < ActiveResource::Base
     self.site = 'https://www.bookingsync.com'
-        
+
     protected
     # Dynamic finder for attributes
     def self.method_missing(method, *args)
