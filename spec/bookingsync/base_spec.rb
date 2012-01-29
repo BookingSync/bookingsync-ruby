@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'spec_helper'
 
 describe BookingSync::Base do
   it { subject.should be_a_kind_of ActiveResource::Base }

@@ -1,8 +1,8 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'spec_helper'
 
 describe BookingSync::Booking do
   subject { BookingSync::Booking.new(:id => 1) }
-  
+
   it { should be_a_kind_of BookingSync::Booking }
 
   it_should_behave_like "a paginated class"

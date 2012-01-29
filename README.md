@@ -5,7 +5,7 @@
 
 This gem provides a set of classes to access information on [BookingSync][bs] via the published [API][api]:
 
-    Booking, Client, Rental.
+`Booking`, `Client`, `Rental` and `Inquiry`.
 
 All these classes are inherited from ActiveResouce::Base. You can refer to the [ActiveResouce][ar] documentation for more information.
 
