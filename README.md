@@ -6,17 +6,23 @@ This gem provides a set of classes to access information on [BookingSync][bs] vi
 
     Booking, Client, Rental.
 
-All these classes are inherited from ActiveResouce::Base. Refer to the [ActiveResouce][ar] documentation for more information.
+All these classes are inherited from ActiveResouce::Base. You can refer to the [ActiveResouce][ar] documentation for more information.
 
 ## Installing
 
     gem install bookingsync
 
-### Dependencies (see <code>bookingsync.gemspec</code> or run <code>bundle check</code>)
+or within a Rails 3 application
+
+    gem "bookingsync"
+
+### Dependencies
+
+This gem depends on ActiveResource 3.x
 
 ### Documentation
 
-  I'm on [rdoc.info][rdoc]
+Further documentation can be found on [rdoc.info][rdoc].
 
 ### Configure your key
 
@@ -24,8 +30,8 @@ All these classes are inherited from ActiveResouce::Base. Refer to the [ActiveRe
 
     BookingSync::Base.user = 'api-auth-token'
 
-If you are using this in a Rails application, putting this code in a config/initializers/bookingsync.rb
-file is recommended. See config_initializers_bookingsync.rb in the examples/ directory.
+If you are using this in a Rails application, putting this code in a `config/initializers/bookingsync.rb`
+file is recommended. See `config_initializers_bookingsync.rb` in the `examples/` directory.
 
 ## Usage
 
