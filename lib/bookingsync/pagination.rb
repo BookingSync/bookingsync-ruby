@@ -17,17 +17,18 @@ module BookingSync
       end
 
       private
-      
+
       def each(options = {})
         options[:params] ||= {}
         options[:params][:page] = 1
+        options[:params][:per_page] = 500
 
         loop do
           if (records = self.find(:all, options)).try(:any?)
             records.each { |record| yield record }
             options[:params][:page] += 1
           else
-            break # no booking included on that page, there's no more booking
+            break # no record included on that page, there's no more record
           end
         end
       end
