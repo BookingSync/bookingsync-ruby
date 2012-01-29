@@ -1,5 +1,6 @@
 # BookingSync [![Build Status](http://travis-ci.org/BookingSync/bookingsync-ruby.png)](http://travis-ci.org/BookingSync/bookingsync-ruby)
 
+
 ## What is it?
 
 This gem provides a set of classes to access information on [BookingSync][bs] via the published [API][api]:
@@ -20,10 +21,6 @@ or within a Rails 3 application
 
 This gem depends on ActiveResource 3.x
 
-### Documentation
-
-Further documentation can be found on [rdoc.info][rdoc].
-
 ### Configure your key
 
     require 'bookingsync'
@@ -32,6 +29,10 @@ Further documentation can be found on [rdoc.info][rdoc].
 
 If you are using this in a Rails application, putting this code in a `config/initializers/bookingsync.rb`
 file is recommended. See `config_initializers_bookingsync.rb` in the `examples/` directory.
+
+### Documentation
+
+Further documentation can be found on [rdoc.info][rdoc].
 
 ## Usage
 
