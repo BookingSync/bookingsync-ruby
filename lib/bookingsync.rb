@@ -8,6 +8,7 @@ require 'bookingsync/rental'
 require 'bookingsync/inquiry'
 require 'bookingsync/public/base'
 require 'bookingsync/public/availability'
+require 'bookingsync/public/booking'
 
 module BookingSync
 end
