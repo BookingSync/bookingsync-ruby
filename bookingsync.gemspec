@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'activeresource', '>= 3.0'
 
-  s.add_development_dependency "rake", "~> 0.9"
+  s.add_development_dependency "rake", "~> 13.0"
   s.add_development_dependency "cucumber", "1.0.0"
   s.add_development_dependency "aruba", "0.4.2"
   s.add_development_dependency "nokogiri", "1.4.4"
